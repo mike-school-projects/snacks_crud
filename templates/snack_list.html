@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table-auto">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for snack in snacks %}
+                <tr>
+                    <td><a href="{% url 'snack_detail' snack.pk %}">{{snack.name}}</a></td>
+                    <td>{{snack.description}}</td>
+                    <td><a href="{% url 'snack_update' snack.pk %}" class="border-solid border-2 border-black rounded-md">UPDATE</a></td>
+                    <td><a href="{% url 'snack_delete' snack.pk %}" class="border-solid border-2 border-black rounded-md">DELETE</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}
